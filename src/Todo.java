@@ -4,7 +4,6 @@ public class Todo {
 
         if (args.length == 0) {
             TodoList myTodo = new TodoList();
-            myTodo.getList();
         }else if (args[0].startsWith("-l")) {
             TodoList myTodo = new TodoList();
             myTodo.getList();
