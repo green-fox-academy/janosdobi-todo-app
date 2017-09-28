@@ -2,14 +2,16 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class TodoList {
 
-    private List<String> myTodoList;
+    private ArrayList<String> myTodoList;
 
-    //empty constructor prints out usage info
     public TodoList() {
+        myTodoList = new ArrayList<>();
         System.out.println("Command Line Todo application");
         System.out.println("=============================");
         System.out.println("");
@@ -21,21 +23,15 @@ public class TodoList {
         System.out.println("");
     }
 
-    public TodoList(String input) {
-        if (input.equals("-l")) {
-            getList();
-        }
-    }
-
-
     public void getList() {
-        Path path = Paths.get("src/Data.txt");
+        Path path = Paths.get("C:/Users/PC-DJ/Documents/GreenFox/janosdobi-todo-app/src/Data.txt");
         try {
             List<String> myList = Files.readAllLines(path);
             if (myList.size() == 0) {
                 System.out.println("No todos for today!");
             } else {
                 for (int i = 0; i < myList.size(); i++) {
+                    myTodoList.add(myList.get(i));
                     System.out.println(i + 1 + " - " + myList.get(i));
                 }
             }
@@ -45,10 +41,18 @@ public class TodoList {
 
     }
 
-    public void setList() {
-        Path path = Paths.get("src/Data.txt");
+    public void setList(String input) {
+        Path path = Paths.get("C:/Users/PC-DJ/Documents/GreenFox/janosdobi-todo-app/src/Data.txt");
+
+        try {
+            List<String> myList = Files.readAllLines(path);
+            for (int i = 0; i < myList.size(); i++) {
+                myTodoList.add(myList.get(i));
+            }
+            myTodoList.add(input);
+            Files.write(path, myTodoList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
-
-
 }

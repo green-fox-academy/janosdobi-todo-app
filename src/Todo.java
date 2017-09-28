@@ -1,12 +1,15 @@
-import java.util.Scanner;
-
 public class Todo {
+
     public static void main(String[] args) {
 
-        Todo myTodo = new Todo();
-        Scanner input = new Scanner(System.in);
-        String command = input.nextLine();
-        myTodo = new Todo(command);
-
+        if (args.length == 0) {
+            TodoList myTodo = new TodoList();
+        }else if (args[0].equals("-l")) {
+            TodoList myTodo = new TodoList();
+            myTodo.getList();
+        } else if (args[0].startsWith("-a")) {
+            TodoList myTodo = new TodoList();
+            myTodo.setList(args[1]);
+        }
     }
 }
