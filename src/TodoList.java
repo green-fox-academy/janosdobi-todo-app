@@ -68,7 +68,7 @@ public class TodoList {
             List<String> myList = Files.readAllLines(path);
             for (int i = 0; i < myList.size(); i++) {
                 myTodoList.addItem(new Item(myList.get(i)));
-                if (i == Integer.parseInt(checkIndex)) {
+                if (i == Integer.parseInt(checkIndex) - 1) {
                     myTodoList.getItem(i).complete();
                 }
             }
@@ -88,7 +88,7 @@ public class TodoList {
             List<String> myList = Files.readAllLines(path);
             for (int i = 0; i < myList.size(); i++) {
                 myTodoList.addItem(new Item(myList.get(i)));
-                if (i == Integer.parseInt(checkIndex)) {
+                if (i == Integer.parseInt(checkIndex) - 1) {
                     myTodoList.removeItem(i);
                 }
             }
