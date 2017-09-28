@@ -30,14 +30,13 @@ public class TodoList {
                 System.out.println("No todos for today!");
             } else {
                 for (int i = 0; i < myList.size(); i++) {
-                    myTodoList.add(new Item(myList.get(i)));
-                    System.out.println(i + 1 + " - " + myTodoList.get(i));
+                    myTodoList.addItem(new Item(myList.get(i)));
+                    System.out.println(i + 1 + " - " + myTodoList.getItem(i));
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public void setList(String input) {
@@ -46,12 +45,32 @@ public class TodoList {
         try {
             List<String> myList = Files.readAllLines(path);
             for (int i = 0; i < myList.size(); i++) {
-                myTodoList.add(new Item(myList.get(i)));
+                myTodoList.addItem(new Item(myList.get(i)));
             }
-            myTodoList.add(new Item(input));
+            myTodoList.addItem(new Item(input));
             List<String> myOutputList = new ArrayList<>();
             for (int i = 0; i < myTodoList.size(); i++) {
-                myOutputList.add(myTodoList.get(i).toString());
+                myOutputList.add(myTodoList.getItem(i).toString());
+            }
+            Files.write(path, myOutputList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void checkItem(String checkIndex) {
+        Path path = Paths.get("C:/Users/PC-DJ/Documents/GreenFox/janosdobi-todo-app/src/Data.txt");
+        try {
+            List<String> myList = Files.readAllLines(path);
+            for (int i = 0; i < myList.size(); i++) {
+                myTodoList.addItem(new Item(myList.get(i)));
+                if (i == Integer.parseInt(checkIndex)) {
+                    myTodoList.getItem(i).complete();
+                }
+            }
+            List<String> myOutputList = new ArrayList<>();
+            for (int i = 0; i < myTodoList.size(); i++) {
+                myOutputList.add(myTodoList.getItem(i).toString());
             }
             Files.write(path, myOutputList);
         } catch (IOException e) {

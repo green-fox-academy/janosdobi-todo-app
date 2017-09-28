@@ -1,6 +1,6 @@
 public class Item {
     private String name;
-    private boolean completed;
+    boolean completed;
 
     public Item(String name) {
         this.name = name;
@@ -13,6 +13,6 @@ public class Item {
 
     @Override
     public String toString() {
-        return (completed ? "[x] " : "[ ] ") + name;
+        return name;
     }
 }

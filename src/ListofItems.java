@@ -5,6 +5,22 @@ public class ListofItems extends ArrayList {
 
     private List<Item> items;
 
+    public ListofItems() {
+        items = new ArrayList<>();
+    }
+
+    public void addItem(Item item) {
+        items.add(item);
+    }
+
+    public Item getItem(int i) {
+        return items.get(i);
+    }
+
+    public int size() {
+        return items.size();
+    }
+
     @Override
     public String toString() {
         String result = "";
