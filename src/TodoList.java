@@ -4,14 +4,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class TodoList {
 
-    private ArrayList<String> myTodoList;
+    private ListofItems myTodoList;
 
     public TodoList() {
-        myTodoList = new ArrayList<>();
+        myTodoList = new ListofItems();
         System.out.println("Command Line Todo application");
         System.out.println("=============================");
         System.out.println("");
@@ -31,8 +30,8 @@ public class TodoList {
                 System.out.println("No todos for today!");
             } else {
                 for (int i = 0; i < myList.size(); i++) {
-                    myTodoList.add(myList.get(i));
-                    System.out.println(i + 1 + " - " + myList.get(i));
+                    myTodoList.add(new Item(myList.get(i)));
+                    System.out.println(i + 1 + " - " + myTodoList.get(i));
                 }
             }
         } catch (IOException e) {
@@ -47,10 +46,14 @@ public class TodoList {
         try {
             List<String> myList = Files.readAllLines(path);
             for (int i = 0; i < myList.size(); i++) {
-                myTodoList.add(myList.get(i));
+                myTodoList.add(new Item(myList.get(i)));
             }
-            myTodoList.add(input);
-            Files.write(path, myTodoList);
+            myTodoList.add(new Item(input));
+            List<String> myOutputList = new ArrayList<>();
+            for (int i = 0; i < myTodoList.size(); i++) {
+                myOutputList.add(myTodoList.get(i).toString());
+            }
+            Files.write(path, myOutputList);
         } catch (IOException e) {
             e.printStackTrace();
         }
