@@ -77,4 +77,25 @@ public class TodoList {
             e.printStackTrace();
         }
     }
+
+    public void removeItem(String checkIndex) {
+        Path path = Paths.get("C:/Users/PC-DJ/Documents/GreenFox/janosdobi-todo-app/src/Data.txt");
+        try {
+            List<String> myList = Files.readAllLines(path);
+            for (int i = 0; i < myList.size(); i++) {
+                myTodoList.addItem(new Item(myList.get(i)));
+                if (i == Integer.parseInt(checkIndex)) {
+                    myTodoList.removeItem(i);
+                }
+            }
+            List<String> myOutputList = new ArrayList<>();
+            for (int i = 0; i < myTodoList.size(); i++) {
+                myOutputList.add(myTodoList.getItem(i).toString());
+            }
+            Files.write(path, myOutputList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

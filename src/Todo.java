@@ -13,6 +13,9 @@ public class Todo {
         } else if (args[0].startsWith("-c")) {
             TodoList myTodo = new TodoList();
             myTodo.checkItem(args[1]);
+        } else if (args[0].startsWith("-r")) {
+            TodoList myTodo = new TodoList();
+            myTodo.removeItem(args[1]);
         }
     }
 }

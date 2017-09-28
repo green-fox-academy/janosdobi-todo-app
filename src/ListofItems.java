@@ -17,6 +17,10 @@ public class ListofItems extends ArrayList {
         return items.get(i);
     }
 
+    public void removeItem(int i) {
+        items.remove(i);
+    }
+
     public int size() {
         return items.size();
     }
