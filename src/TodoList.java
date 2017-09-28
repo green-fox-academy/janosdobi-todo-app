@@ -74,7 +74,7 @@ public class TodoList {
             }
             List<String> myOutputList = new ArrayList<>();
             for (int i = 0; i < myTodoList.size(); i++) {
-                myOutputList.add((myTodoList.getItem(i).completed ? "[x] " : "[ ] ") + myTodoList.getItem(i).toString());
+                myOutputList.add((myTodoList.getItem(i).completed ? "[x] " : "[ ] ") + myTodoList.getItem(i).toString().substring(4));
             }
             Files.write(path, myOutputList);
         } catch (IOException e) {
