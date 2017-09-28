@@ -24,8 +24,8 @@ public class Todo {
         Path path = Paths.get("src/Data.txt");
         try {
             List<String> myList = Files.readAllLines(path);
-            for (String item : myList) {
-                System.out.println(item);
+            for (int i = 0; i < myList.size(); i++) {
+                System.out.println(i + 1 + " - " + myList.get(i));
             }
         } catch (IOException e) {
             e.printStackTrace();
