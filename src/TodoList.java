@@ -22,6 +22,10 @@ public class TodoList {
         System.out.println("");
     }
 
+    public TodoList(String input) {
+        myTodoList = new ListofItems();
+    }
+
     public void getList() {
         Path path = Paths.get("C:/Users/PC-DJ/Documents/GreenFox/janosdobi-todo-app/src/Data.txt");
         try {
